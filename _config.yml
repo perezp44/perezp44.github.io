@@ -1,0 +1,58 @@
+# Site wide configuration
+
+title:            pjp BLOG
+locale:           en_US
+url:              http://perezp44.github.io
+# url:              http://localhost:4000
+
+name: pjp BLOG
+description: Blog on R & computing & flowers (for myself)
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+
+# Site owner
+owner:
+  name: Pedro J. Pérez
+  avatar: meSmall.jpg
+  bio: "Learning about R & computing & flowers."
+  email: pedro.j.perez@uv.es
+  disqus-shortname: blogpedrojperez
+  twitter: 
+  facebook: #username
+  google:
+    plus: #username
+    analytics: UA-71846326-1
+    verify: 
+    ad-client: 
+    ad-slot: 
+  bing-verify: 
+  github: perezp44
+  stackoverflow: 
+  linkedin: 
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

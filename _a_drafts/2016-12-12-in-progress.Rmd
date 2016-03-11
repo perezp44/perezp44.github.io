@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Hello world!!"
+author: Pedro J. Perez
+description: "Only to say hello world & intenciones"
+category: r
+tags: [blog]
+comments: true
+---
+
+```{r setup, echo = FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(message=FALSE, cache=TRUE, warning=FALSE, echo=TRUE, dev="jpeg")
+```
+
+Hello world,

@@ -1,0 +1,201 @@
+---
+layout: post
+title: "¿Son tristes las canciones de Nacho Vegas? (Sentiment analysis of NV lyrics)"
+author: Pedro J. Perez
+description: 
+category: r
+tags: [R, Github]
+comments: true
+---
+
+```{r setup, echo = FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(message=FALSE, cache=TRUE, warning=FALSE, echo=TRUE, dev="jpeg")
+```
+
+
+Pues eso, se trata de que la Ciencia se pronuncie por fin: ¿son tristes las canciones de ese cantante/cantautor recientemente convertido al populismo llamado Nacho Vegas? Diga lo que diga la ciencia, la respuesta, como sabemos todos los que seguimos a NV, es que NO, o bueno un poco, depende, ¡yo que sé! ¡Que más da! son canciones que hacen sentir. Veamos si la ciencia coincide con mi valoración.  
+
+Utilizaré una técnica/método llamada **Analisis de sentimiento(s)** (bonito nombre!!). Como la Wikipedia dice [aquí](https://es.wikipedia.org/wiki/An%C3%A1lisis_de_sentimiento), el análisis de sentimiento se refiere al uso de procesamiento de lenguaje natural (PNL), análisis de texto y lingüística computacional para identificar y extraer información subjetiva de unos recursos (WTF?). La propia Wikipedia aclara que:  
+
+> En términos generales, el análisis de sentimiento intenta determinar la actitud de un interlocutor o un escritor con respecto a algún tema o la polaridad contextual general de un documento. La actitud puede ser su juicio o evaluación, estado afectivo (o sea, el estado emocional del autor al momento de escribir), o la intención comunicativa emocional (o sea, el efecto emocional que el autor intenta causar en el lector).   
+
+Vamos, que pretendo desentrañar, sin hacer daño a nadie, cual era la intención (comunicativa emocional) de NV al componer esas extrañas canciones, ¿hacernos llorar/reír/pensar.... o las hace para él? (Se me esta ocurriendo ahora mientras escribo hacer el mismo análisis a este texto para ver que pretendo: ¿aprender R? ¿conocer a NV? ¿enamorar a BB? ¿ir a Albacete?, who knows!!, igual las 3 cosas). Al lío que me disperso.  
+
+Para ello voy a utilizar R y varios packages. La verdad es que mientras escribo esto aun no se prácticamente nada de PNL ni de análisis de sentimiento, pero intentaré aprender algo.   
+
+
+Lo primero que tengo que hacer es hacerme con las letras de algunas canciones de NV. Esto debería hacerlo programáticamente haciendo web scrapping (pero sé muy poquito de esto, así que lo hago a mano, ya aprenderé web scrapping). De momento cogeré solo 3 canciones. Si todo chuta añadiré alguna más, al menos 10 canciones, para que sea un poco representativo del corpus/universo creativo de NV. Pero eso será en otra vida, ahora no.   
+
+Primer dilema, ¿que canciones cojo?, pues para ver si la técnica acierta voy a coger 3: una triste, una alegre y otra in the midle; así podré ver si la técnica coincide con mi opinión personal. No diré cual es cada cual, así los potenciales lectores podrán jugar y mantendré algo el misterio.  
+
+Por votación popular las canciones son, estrictamente en este orden : Ocho y medio, En mi nueva vida y Detener el tiempo
+
+
+```{r letras, eval=TRUE, echo=FALSE}    
+
+letra_ocho <- "Miro al techo que hoy ha vuelto a gotear; hacía tiempo que no llovía así. Y cada gota golpeando contra los cacharros de metal me hace pensar unas veces en sangre y otras veces en ti. Lo que en realidad viene a ser lo mismo. Lo que, por crueldad, viene a dar igual. O puede ser un ángel que una vez perdió la fe y fue expulsado, y que ha venido a agonizar justo encima de mi hogar y estas gotas sean sus lágrimas. O puede que sea hora de entrar ya en razón y llegar a comprender que dentro de este horror no hay literatura, no, y eso tú lo sabes bien a fuerza de caer en una trampa mortal que en el tiempo dura ya ocho años y medio. Seré muy breve; te quiero, y esto duele. Y vino un pájaro a posarse en mi ventana. Tenía una ala rota y su plumaje era gris y azul. Y al acercar mi mano y comprobar que no echaba a volar supe de inmediato que lo enviabas tú. Lo tomé entre mis garras y lo dejé morir, y cuando lo hizo aún llovía aquí. Y la sangre al gotear entre zarpas de animal presagió mi suerte, como una ave que voló de Madrid hacia Gijón aun herida de muerte, reescribiendo la espiral de prometer hacerlo bien, cometer un nuevo error, no saber pedir perdón o pedirlo demasiadas veces. Y aunque ahora escupo una oración helado de terror ningún dios responde aún. ¿Soy yo el que no ve o es que todavía no se hizo la luz? Seré muy breve; te extraño, y esto duele. Y trato de encontrar una salida pero no recuerdo ni por dónde hemos entrado aquí. Y contemplo junto a mí el cadáver del que fui ?según tú- en una ocasión, y es la mancha de humedad la de la herida mortal impregnada en el colchón, y ahora que te oigo llorar en lugar de ir hacia ti me vuelvo a anestesiar y me limito a subir el volumen del televisor, o me concentro en recordar, para no pensar en ti, que tendría que llamar y que alguien venga a reparar la gotera de una puta vez, que ya cansé de recoger litros de agua gris, gris como un metal que un día relució y hoy lo cubre suciedad. ¿Qué se hace para amar lo que quise despreciar ya una y mil veces? Seré muy breve; te he perdido, y esto duele"
+letra_alnorte <- "Esto es para decirte Que aquí esta empezando a nevar La playa parece un oso Que duerme junto al mar Es una extraña mañana De febrero en Gijón Hoy siento mucho más lejos Aquellas noches de calor Y esto es para decirte Lo mucho que pienso en ti Hay hielo sobre los coches ¿Alguna vez viviste aquí? Perdona, no logro recordar Miré por mi ventana Conozco estas calles tan bien Te buscaré con la mente Aunque no te alcance a ver Y recordé viendo el Muro Algo que un buen día te oí Vivo al norte del norte Hace frío en mi país Lejos de todo, lejos de ti Y si alguna vez te hice daño En este u otro rincón Quiero que sepas con esto Que no era mi intención Que si lo era, no eras tú la razón Y un día tuve noticias De un extranjero sin voz Decía ser tu amante Y si lo era, ¿quién era yo? Creo que hablé demasiado Ahora tengo que salir Sigue nevando ahí fuera Cuídate mucho y sé feliz Te quiere,"
+
+letra_simon <- "Simón, desde que te fuiste tengo que decir Que la verdad, no estamos nada mal sin ti También es cierto que podríamos estar mejor Pero ya ves, las buenas cosas mueren bajo el sol Y ahora es la memoria mi guía Porque eso sí, pienso en ti cada día Desde aquella mañana de agosto Reinventada hasta la saciedad Sin lograr encontrar nada de nada Ni una explicación ni un porqué Al que poder aferrarme (Y ahora no sé por qué Viene a mi mente el colchón Que tuvimos que bajar Javi y yo a la basura Sin poder dejar de mirar esa mancha oscura Que allí nos dejaste como herencia y recuerdo Antes de partir en tu último viaje Probablemente al infierno)  Y me vas a disculpar Si nunca te llevo rosas Me vas a permitir Contar algunas cosas Sobre lo poco que sé De tus días de vino y rosas Con todas las bromas Como aquella en que al pasar delante de una funeraria Nos decías agachaos, no vaya a ser Que os tomen las medidas Ese era tu consejo, tu sabio consejo Y no estuvo mal, pero se te olvidó Algo importante: Tú también tenías que agacharte Sí, tú también tenías que agacharte Pero nunca quisiste cuidarte No, nunca quisiste cuidarte.  Y quiero pensar que por una vez Hice algo mejor que tú Quiero pensar que por una vez Hice algo mejor Que tú que ni siquiera Acabaste esa carta de despedida Que en el ordenador Santi encontró perdida Y ahora que perdiste tan absurdamente la partida Ahora estoy cansado Y hasta tengo miedo de mi propia vida Y sé que lo tendré toda la puta vida Decida lo que decida  Bueno, al final tal vez tuviste suerte Porque tal vez dímelo tú Mejor que ser un hombre solo y arruinado Resulte ser, como dijo el juez, el finado (Mientras se tapaba la nariz con su pañuelo) Y desde cualquier lugar Dondequiera que ahora te estés pudriendo Sólo quiero que sepas que ya no te tengo miedo Que ahora estoy cansado Y sólo tengo miedo de mi propia vida Y que sé que lo tendré Toda la puta vida Decida lo que decida  Como tú siempre decías Formalidad poca, pero que dure Como tú siempre decías  Gracias  Así es y así será Toda mi vida Decida lo que decida."
+
+letra_brujita <- "Brujita, hoy quiero, desde este agujero, decirte que muero por ti. Por tus manos frías, por las brujerías, por tu forma de toser.  Tal vez esté escrita mi vida, brujita. Tal vez te llegue a perder. Pero ¡cuánto te quiero, mi amor verdadero! Sin ti está mal hecho el mundo.  Ya huele a tormenta, rechinan veletas, mas tú, tú me puedes salvar. Desciendes deprisa, sin paracaídas, en tu escoba a todo gas.  Brujita, me irrita la gente, ¡maldita!, que trata de hacerte sufrir. Yo los mataría, les arrancaría la piel hasta verlos morir.  Como un cocotero, como un rascacielos, así de bonita eres tú. Te observo durmiendo, pequeño misterio que nadie jamás resolvió.  Tal vez esté escrita mi vida, brujita. Tal vez te llegue a perder. Pero ¡cuánto te quiero, mi amor verdadero! Sin ti está mal hecho el mundo. ¡Sin ti está mal hecho el mundo!"
+
+letra_nuevavida <- "En mi nueva vida voy a ser siempre puntual; minaré las dudas que haya acerca de mi seriedad.  En mi nueva vida me haré llamar librepensador; leeré el Época y otras revistas de humor.  En mi nueva vida llamaré a mi madre más; le haré saber que su hijo la quiere más que el que más.  En mi nueva vida solo envejeceré; cada vez que tenga un poco de tiempo que perder.  En mi nueva vida no habrá drogas ni alcohol; dedicaré las tardes a contemplar puestas de sol.  En mi nueva vida abrazaré una nueva fe; una que me invente y que haga trascender el ser.  Pero ¿no lo ves, no lo ves, no lo ves? Ahora estoy perdido en mi canción, así que todo eso será en mi nueva vida pero ahora no. Ahora mismo no, ahora no, señor; todo cambiará en mi nueva vida pero ahora no.  En mi nueva vida quedaré con mi nuevo amor para la merienda cada tarde en la López-Ibor.  En mi nueva vida nada me asemejará a los seres humanos salvo el hecho de ser uno de ellos más.  En mi nueva vida lograré gritar al fin: esta es mi tara, mi única razón para vivir.  En mi nueva vida sabré hablar con autoridad, ahora del tocino, ahora de la velocidad.  Pero ¿no lo ves, no lo ves, no lo ves? Ahora estoy perdido en mi canción, así que todo eso será en mi nueva vida pero ahora no. Ahora mismo no, ahora no, señor; todo cambiará en mi nueva vida pero ahora no.  En mi nueva vida lo haré mejor. En mi nueva vida, a lo mejor.  ¿No lo ves, no lo ves, no lo ves? Ahora estoy perdido en mi canción, así que todo eso será en mi nueva vida pero ahora no. Ahora mismo no, ahora no, señor; todo cambiará en mi nueva vida pero ahora no. Ahora solo espero ver un nuevo cambio de estación, y todo cambiará en mi nueva vida pero ahora no."
+
+letra_detener <- "En mi nueva vida voy a ser siempre puntual; minaré las dudas que haya acerca de mi seriedad.  En mi nueva vida me haré llamar librepensador; leeré el Época y otras revistas de humor.  En mi nueva vida llamaré a mi madre más; le haré saber que su hijo la quiere más que el que más.  En mi nueva vida solo envejeceré; cada vez que tenga un poco de tiempo que perder.  En mi nueva vida no habrá drogas ni alcohol; dedicaré las tardes a contemplar puestas de sol.  En mi nueva vida abrazaré una nueva fe; una que me invente y que haga trascender el ser.  Pero ¿no lo ves, no lo ves, no lo ves? Ahora estoy perdido en mi canción, así que todo eso será en mi nueva vida pero ahora no. Ahora mismo no, ahora no, señor; todo cambiará en mi nueva vida pero ahora no.  En mi nueva vida quedaré con mi nuevo amor para la merienda cada tarde en la López-Ibor.  En mi nueva vida nada me asemejará a los seres humanos salvo el hecho de ser uno de ellos más.  En mi nueva vida lograré gritar al fin: esta es mi tara, mi única razón para vivir.  En mi nueva vida sabré hablar con autoridad, ahora del tocino, ahora de la velocidad.  Pero ¿no lo ves, no lo ves, no lo ves? Ahora estoy perdido en mi canción, así que todo eso será en mi nueva vida pero ahora no. Ahora mismo no, ahora no, señor; todo cambiará en mi nueva vida pero ahora no.  En mi nueva vida lo haré mejor. En mi nueva vida, a lo mejor.  ¿No lo ves, no lo ves, no lo ves? Ahora estoy perdido en mi canción, así que todo eso será en mi nueva vida pero ahora no. Ahora mismo no, ahora no, señor; todo cambiará en mi nueva vida pero ahora no. Ahora solo espero ver un nuevo cambio de estación, y todo cambiará en mi nueva vida pero ahora no."
+
+letras <- c(letra_ocho, letra_alnorte, letra_simon, letra_brujita, letra_nuevavida, letra_detener)
+
+```  
+
+Bueno, aunque no lo hayáis visto, he cargado las letras de 6 canciones. ¿Para qué he hecho la votación?. Meto las letras en un vector:  
+
+
+
+```{r vector, eval=TRUE, echo=TRUE}    
+letras <- c(letra_ocho, letra_alnorte, letra_simon, letra_brujita, letra_nuevavida, letra_detener)
+
+```
+
+
+Para que veis lo bonitas (y poco tristes) que son las letras os dejo la de Brujita:  
+
+> Brujita, hoy quiero, desde este agujero, decirte que muero por ti. Por tus manos frías, por las brujerías, por tu forma de toser.  Tal vez esté escrita mi vida, brujita. Tal vez te llegue a perder. Pero ¡cuánto te quiero, mi amor verdadero! Sin ti está mal hecho el mundo.  Ya huele a tormenta, rechinan veletas, mas tú, tú me puedes salvar. Desciendes deprisa, sin paracaídas, en tu escoba a todo gas.  Brujita, me irrita la gente, ¡maldita!, que trata de hacerte sufrir. Yo los mataría, les arrancaría la piel hasta verlos morir.  Como un cocotero, como un rascacielos, así de bonita eres tú. Te observo durmiendo, pequeño misterio que nadie jamás resolvió.  Tal vez esté escrita mi vida, brujita. Tal vez te llegue a perder. Pero ¡cuánto te quiero, mi amor verdadero! Sin ti está mal hecho el mundo. ¡Sin ti está mal hecho el mundo!"
+
+
+
+
+Si os ha gustado la letra de Brujita , podéis ver a NV tocándola el solito [aquí](https://www.youtube.com/watch?v=20011Cccisg). Es un vídeo largo, merece la pena pero Brujita empieza por el minuto 21.   
+
+¿Triste? Puff, muchos matices, que se pronuncien los   críticos musicales o NV.  
+
+Me ha dado por buscar en Google lo siguiente: "son tristes las canviones de Nacho vegas" canciones con v. Literal. Y el segundo resultado de la búsqueda ha sido [este](http://www.dodmagazine.es/canciones-mas-triste-del-indie-espanol/). Como podéis ver, según **dod Magazin**, la quinta canción más triste del indie español es .... Ocho y medio. No puede ser, NV aparece también en los puestos 12,19,21 y 97 de una lista de 109; ademas, en uno de los comentarios se dice literalmente "prácticamente cualquier canción de nacho vegas podría estar en esta lista"; ademas, varios dicen que va a empezar a llover es triste. Discrepo, ¡pero si esta canción se la ponía yo a mis niños y les encantaba! Bueno, quizás esta frase `Tache los días de calendario en los que nos hicimos daño y quedaron tres` puede que sea un poco triste. Los Planetas también aparecen mucho en la lista (8,25,26,55,106 y 107), y McEnroe, ¿que pasa con ellos? (16,40,76)
+
+
+Dejamos a Brujita y al dod Magazine. Cargo los packages que harán el trabajo sucio:  
+
+```{r pcakges, eval=TRUE, echo=T}    
+library(syuzhet)
+library(tm)
+library(wordcloud)
+library(dplyr)
+```  
+
+Ahora hay que trabajar/destripar las letras. Tal como la escribió NV no vale para el trabajo riguroso de la ciencia. hay que quitar las tildes, interrogantes, exclamaciones ... Viva el castellano!  
+
+
+```{r tildes, eval=TRUE, echo=T}    
+letras <- base::chartr('áéíóú' , 'aeiou',letras)  #- quitar tildes
+letras <- base::chartr('ÁÉÍÓÚ' , 'AEIOU',letras)  #- quitar tildes
+#letras <- chartr('?¿()!¡','      ',letras)          #- interrogantes, parentesis y exclamaciones
+letras <- gsub(';|,|\\.|?|¿|!|¡|(|)' , '', letras)          #- comas, puntos y comas ....
+
+```  
+Ya podemos hacer un análisis de sentimientos de estas canciones ¿cual será la más triste? Yo tengo mi opinión, pero ¿y la ciencia? Utilizaré la función `get_nrc_sentiment()` del package `syuzhet`. Esta función usa the NRC sentiment dictionary to calculate the presence of eight different emotions and their corresponding prevalence in a text file. 
+
+```{r sent, eval=TRUE, echo=T}    
+sentiment_NV <- get_nrc_sentiment(letras)
+row.names(sentiment_NV) <- c('8 y 1/2', 'Al Norte' , 'Simon', 'Brujita' , 'Nueva vida' , 'Detener')
+```  
+El veredicto es: 
+
+```{r print, eval=TRUE, echo=T}    
+print(sentiment_NV[,1:8])
+```  
+Como podéis ver, **Ocho y medio** se lleva la palma: puntúa en todo, tiene 3 puntos en tristeza y 4 en miedo pero también 1 en joy (¿eh?!, pero si la tabla no pone 1 punto en joy) 
+
+Notita al margen: Ese punto de joy del que hablo no aparece en el cuadro de arriba por un detalle técnico que no quiero/puedo resolver: no sé que pasa con las tildes al pasar el post por jekyll, pero juro y perjuro que 8 y 1/2 tenía un puntito en joy. Más adelante hay más fallos de concordancia entre las puntuaciones de las tablas y el texto. En realidad salé todo como dice el texto, pero aquí, al pasarlo por Jekyl no me quita las tildes y eso hace que las palabras se clasifiquen de forma distinta.      
+
+Veamos el indice de tristeza/alegría ¿qué canción ganará?
+
+```{r print2, eval=TRUE, echo=T}    
+print(sentiment_NV[,9:10])
+```  
+Pues **8 y medio** gana de calle en palabros tristes/negativos (6), PERO también tiene 4 happies ... 
+
+NV, lo siento, todas tus canciones tienen al menos un punto negativo, así que .... peo, un momento, quizás debamos compararlo con otro cantante, ¿cual? NPI , ya ... Serrat y Mediterráneo.   
+
+Vamos allá, repito el análisis incorporando mediterráneo de Serrat:
+
+```{r mediterraneo, eval=TRUE, echo=F}    
+letra_mediterraneo <- "Quizás porque mi niñez sigue jugando en tu playa y escondido tras las cañas duerme mi primer amor, llevo tu luz y tu olor por dondequiera que vaya, y amontonado en tu arena guardo amor, juegos y penas. Yo, que en la piel tengo el sabor amargo del llanto eterno que han vertido en ti cien pueblos de algeciras a estambul para que pintes de azul sus largas noches de invierno. a fuerza de desventuras, tu alma es profunda y oscura. A tus atardeceres rojos se acostumbraron mis ojos como el recodo al camino. soy cantor, soy embustero, me gusta el juego y el vino, tengo alma de marinero. qué le voy a hacer, si yo nací en el mediterráneo. Y te acercas, y te vas después de besar mi aldea. jugando con la marea te vas, pensando en volver. eres como una mujer perfumadita de brea que se añora y que se quiere que se conoce y se teme. Ay, si un día para mi mal viene a buscarme la parca. empujad al mar mi barca con un levante otoñal y dejad que el temporal desguace sus alas blancas. Y a mí enterradme sin duelo entre la playa y el cielo... En la ladera de un monte, más alto que el horizonte. quiero tener buena vista. mi cuerpo será camino, le daré verde a los pinos y amarillo a la genista. Cerca del mar. porque yo nací en el mediterráneo."
+```  
+
+```{r mediterraneo1, eval=TRUE, echo=T}    
+letras2 <- c(letras, letra_mediterraneo)
+letras2 <- chartr('áéíóúÁÉÍÓÚ','aeiouAEIOU',letras2)  #- quitar tildes
+letras2 <- chartr('?¿()!¡','      ',letras2)          #- interrogantes, parentesis y exclamaciones
+letras2 <- gsub(';|,|\\.|?|¿' , '', letras2)          #- comas, puntos y comas ....
+
+sentiment_NV2 <- get_nrc_sentiment(letras2)
+row.names(sentiment_NV2) <- c('8 y 1/2', 'Al Norte' , 'Simon', 'Brujita' , 'Nueva vida' , 'Detener', 'Mediterraneo')
+
+```  
+
+Y los resultados se sentimientos son: 
+
+```{r mediterraneo2, eval=TRUE, echo=T}    
+print(sentiment_NV2[,1:8])
+
+``` 
+ Guau!, Mediterráneo tiene 1 punto en anger, disgust, fear y sadness. Casi mejor no escucharla :)
+
+
+Y de tristeza/ alegría: 
+
+```{r mediterraneo3, eval=TRUE, echo=T}    
+#sentiment_NV3 <- as.data.frame(sentiment_NV2) %>% arrange(desc(negative))
+print(sentiment_NV2[,9:10])
+``` 
+Como veis mediterráneo tiene 2 puntos de tristeza. Sí, también 2 puntos de alegría, pero gana en tristeza a todas las de NV excepto 8 y 1/2 y Al Norte; es decir, las otras 4 de NV son menos tristes que Mediterráneo: 4/6 es un  `r round(4/6*100, digits=2)` % 
+
+Hasta aquí mi análisis de sentimientos de canciones de NV. Ya os dije que aprendería PNL en mi nueva vida, ahora solo intento sobrevivir. 
+
+
+
+
+Como ha quedado un poco cojo el análisis, ¡lo sé! voy a hacer un gráfico que siempre queda bonito. 
+
+
+```{r corpus, eval=TRUE, echo=T}    
+corpus = Corpus(VectorSource(letras))   #- construye un corpus
+corpus = tm_map(corpus, content_transformer(tolower))  #- a minusculas
+corpus = tm_map(corpus, removeWords, c(stopwords("spanish"), "camila_vallejo"))  #- quita "palabras vacias"
+corpus = tm_map(corpus, stripWhitespace)   #- quita espacion en blanco
+tdm <- TermDocumentMatrix(corpus)          #- crea una matriz de términos
+m = as.matrix(tdm)   #- convierte en matriz
+wf <- sort(rowSums(m),decreasing=TRUE) #- conteo de palabras en orden decreciente
+
+dm <- data.frame(word = names(wf), freq=wf) #- crea un df con las palabras y sus frecuencias
+```  
+
+Finalmente el gráfico de nube de palabras:
+
+```{r nube, eval=TRUE, echo=T}    
+wordcloud(dm$word, dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
+
+```  
+
+¿Como quedaría el gráfico de palabros si juntamos las 6 de NV con mediterráneo? Pues así: 
+```{r corpus_me, eval=TRUE, echo=F}    
+corpus2 = Corpus(VectorSource(letras2))   #- construye un corpus
+corpus2 = tm_map(corpus2, content_transformer(tolower))  #- a minusculas
+corpus2 = tm_map(corpus2, removeWords, c(stopwords("spanish"), "camila_vallejo"))  #- quita "palabras vacias"
+corpus2 = tm_map(corpus2, stripWhitespace)   #- quita espacion en blanco
+tdm2 <- TermDocumentMatrix(corpus2)          #- crea una matriz de términos
+m2 = as.matrix(tdm2)   #- convierte en matriz
+wf2 <- sort(rowSums(m2),decreasing=TRUE) #- conteo de palabras en orden decreciente
+
+dm2 <- data.frame(word = names(wf2), freq=wf2) #- crea un df con las palabras y sus frecuencias
+wordcloud(dm2$word, dm2$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
+```  
+Salen un poco pequeñitos los gráficos. ya los arreglaré.  
+
+Eh!! Un momento, si no aparece la palabra Mediterráneo!! Así es, sorprendentemente Mediterraneo solo nombra 2 veces al (M)mediterráneo. Brujita aparece 4 veces y las que mas aparece en las 7 canciones es: ahora, vida y nueva. Mas de 40 veces!
+
+
+
+PD: Maxi, espero que veas esto!!! Animo!!! Además el gráfico te lo sugiere:  Ahora vida nueva, !a aprovecharla!!
+
+PD2: he querido arreglar algunas faltas y se me han ido los gráficos. Con lo chulos que estaban!, pequeñitos pero chulos

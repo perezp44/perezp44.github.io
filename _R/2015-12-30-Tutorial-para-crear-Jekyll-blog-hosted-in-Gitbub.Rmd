@@ -1,0 +1,185 @@
+---
+layout: post
+title: "Tutorial para crear un Jekyll blog hosted en Github"
+author: Pedro J. Perez
+description: 
+category: r
+tags: [jekyll, minimal-mistakes, blog]
+comments: true
+---
+
+
+```{r setup, echo = FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(message=FALSE, cache=TRUE, warning=FALSE, echo=TRUE, dev="jpeg")
+```
+
+
+Este post pretende ser un tutorial para que mis compis de la UV interesados en estos temas de R&computing puedan crearse un blog (jekyll blog hosted in Github) en 10 minutos. Si alguien lo intenta que ponga el cronometro en marcha.  
+El blog será muy-muy parecido al de [Andy South](http://andysouth.github.io).  
+
+
+1) Necesitas una cuenta en Github. Si no la tienes créate una [aquí](https://github.com/). No te olvides de tu usuario y contraseña. Los necesitarás en breve   
+
+### Forkeando un repo mio (que se basa en el blog de Andy)  
+He preferido partir de un repo mio para no tener que borrar todos los datos/post de Andy.  
+
+2) Entras en tu cuenta de Github. En otra ventana del navegador vas a `https://github.com/perezp44/crear_jekyll_blog` . Verás un botón que pone `Fork`. Pínchalo, estarás "forkeando" mi repo `crear_jekyll_blog` que es una modificación de `andysouth.github.io`   
+
+3) Vuelve a tu cuenta de Github y veras que te aparece un repo llamado precisamente `crear_jekyll_blog`. Claro! previamente has hecho un fork de el  
+
+4) Entra en tu repo llamado `crear_jekyll_blog` porque tienes que cambiarle el nombre    
+
+5) Para cambiarle el nombre tienes que pinchar en la "ruedecita" que señala los Settings. Entras en `Settings` y cambias el nombre de tu repo de `crear_jekyll_blog` a `tu_usuario_de_Github.github.io`     
+
+
+Ya tienes el blog en marcha. Puedes verlo en `http://tu_usuario_de_Github.github.io`   , en mi caso en `http://perezp44.github.io`. Solo que estará mi nombre, después tendrás que ponerle tu nombre etc... etc... Verás que hay un solo post llamado `Hello world!!`     
+
+### Vamos a gestionar el blog a través de un Rproject
+
+6) Abres RStudio (una GUI de R) y creas un nuevo proyecto. Para ello sigue la ruta de menus desplegables `File > NEW Project ...`   
+7) Se abrirá una ventana donde tendrás que ir seleccionando: `Version Control` y después `Git`   
+8) Se abrirá una ventana donde te preguntara 3 cosas:  
+    - Repository URL: https://github.com/perezp44/perezp44.github.io.git    (obviamente sustituye `perepp44` pon tu usuario de Gitbut) [si no funciona prueba a quitar .git]    
+    - Project directory name: perezp44.github.io     (obviamente sustituye `perepp44` pon tu usuario de Gitbut) 
+    - Create project as subdirectory of: C:/Users/perezp/Desktop/My_blog   (yo lo hago en esta ruta, tu has de poner la ruta donde quieres guardar una copia local de tu blog)    
+
+RStudio se conectará con Github y clonará en tu ordenador tu repo `tu_usuario_Github.github.io` alojado en Github. Cuando termine de clonarlo se abrirá en RStudio (en la esquina inferior derecha) la carpeta de tu PC donde has alojado la copia local de tu blog. No cierres RStudio aún.     
+
+### Personalizando tu blog  
+
+
+9) En RStudio (esquina inferior derecha) verás un fichero llamado `_config.yml` ábrelo en RStudio y modifica lo siguiente:    
+    - `name: Pedro J. Perez`   (cambia Pedro J. Perez por tu nombre)  **NO PONGAS TILDES!!!!!**  (bueno si quieres sí, solo es por ser solidario conmigo)  
+    - `description: Quiero contar cosas en este My blog`  y pon una descripción de lo que harás en tu blog      
+    - `github: perezp44` cambia perezp44  por tu usuario de Github   
+	
+10) Guarda los cambios y cierra el archivo `_config.yml`   
+
+Has cambiado un fichero de tu blog, pero los cambios los has hecho en local (en la copia de tu ordenador). Ahora tienes que subir los cambios a Github   
+
+
+### Vamos a actualizar nuestro blog  (commit y push a nuestro repo alojado en Github)  
+
+11) En RStudio (parte de arriba) verás un icono pequeñito (en tres colores: gris verde y rojo) que pone `Git`. Abre el menú desplegable que tiene justo al lado y pincha en `Commit....`  
+
+12) Se abrirá una ventana donde verás en rojo y verde los cambios que has hecho en _config.yml . En la parte de arriba hay un cuadrito que pone algo como `staged`, **márcalo** (tarda un poco en marcarse)  
+
+ Vas a hacer un commit a tu repo alojado en Github. En este caso lo que quieres llevar al repo remoto son los cambios que has hecho en el archivo _config.yml   
+ 
+13) Escribe algo en el cuadro superior de la izquierda (es el titulo del commit. Pon algo que sea representativo del commit, por ejemplo: cambios en _config.yml y dale al boton ` Commit`  
+  
+14) Después de haber dado el botón commit tienes que hacer el "push" dándole a la flecha verde que hay arriba  a la izquierda. Rstudio conectará con GIthub y guardará los cambios en el repo remoto (en Github). Te pedirá identificarte con tu usuario y contraseña de tu cuenta de Github    
+
+Ve a la pagina de tu blog `http://tu_usuario_de_Github.github.io`  y dale a actualizar (o cierra y abre el navegador), verás que ya aparece tu nombre en tu blog     
+
+
+### Seguimos con la personalización de nuestro blog (la afoto)  
+
+- Para cambiar la afoto de la amapola por una tuya, coge un archivo .jpg en la que salgas guapo/a y ponle a ese archivo el nombre: `meSmall.jpg`  (fíjate que la S es mayúscula). Dentro de la carpeta de tu PC donde está tu Rproject verás una carpeta llamada `images` , ve allí y verás que ya hay un archivo llamado `meSmall.jpg`  con la foto de la amapola. Sustituye este archivo por el tuyo.  
+
+OK, ya está tu foto en tu carpeta de Rproject pero para que salga tu foto en el blog has de "commit y push" los cambios al repo remoto. Pero esto ya sabes hacerlo (repite los pasos 11 a 14)      
+
+
+### ¿Qué más tengo que actualizar?
+
+1) El archivo `about.md` . Puedes poner lo que quieras. Incluso borrarlo todo. Lo único que tienes que no tocar/borrar es el trozo siguiente del archivo: 
+
+```{r uno, eval=FALSE, echo=TRUE}    
+---  
+layout: page   
+title: About   
+permalink: /about/    
+---    
+```    
+
+2) El archivo `links.md` . Puedes poner lo que quieras. Incluso borrarlo todo. Lo único que tienes que no tocar/borrar es el trozo siguiente: 
+
+
+```{r dos, eval=FALSE, echo=TRUE}    
+---  
+layout: page  
+title: Links  
+permalink: /links/    
+---   
+```  
+
+  
+3)  Para que los cambios tengan efecto, vuelve a actualizar el blog (Ya sabes commit y push desde RStudio y al navegador a actualizar)
+
+
+También tendrás que borrar mi post `Hello world!!` , pero antes tendrás que subir un post tuyo a tu blog   
+
+### ¿Cómo subo mis post a mi blog?  
+
+Ya casí no me acuerdo porque yo ahora lo hago de otro modo, pero lo intento. 
+
+1) Escribe tu post en formato `.Rmd`. Puedes abrir el fichero `tu_repo_local/_Rmd/2015-12-22-hola-mundo.Rmd` y tomarlo como ejemplo. Ese archivo es el que genera el post `hola mundo!!`  
+
+```{r tres, eval=FALSE, echo=TRUE}    
+---  
+layout: post  
+title: Hola Mundo  
+author: Pedro J. Perez  
+published: false  
+status: process  
+draft: false  
+tags: myblog  
+---  
+Hello world,  
+Si lees esto es que has conseguido montar tu jekyll blog hosted in Github!! Guau!!   
+```  
+
+Has de modificar el `title:` , `author:`  y el contenido del post   
+
+
+2) Al fichero .Rmd que estas creando y que contiene tu primer post has de **guardarlo en la carpeta `_Rmd`**  y darle un nombre como este: `2016-01-14-mi-primer-post` . Como ves el nombre del fichero .Rmd contiene la fecha y titulo del post. **Cuidado:** el nombre del fichero no ha de tener espacios ni mayusculas ni tildes (mayúsculas sí se puede)
+
+Una vez tengas tu post escrito en una .Rmd file has de:  
+
+
+Supón que has cerrado ya RStudio. Para abrir tu Rproject en RStudio abre la carpeta de tu ordenador donde has creado tu Rproject y pincha en el fichero `tu_usuario_Github.github.io.Rpoj`. Se abrirá el proyecto en RStudio   
+
+
+1) Abre el fichero `rmd2md.R`
+
+2) Corre ese fichero en RStudio. Estás creando una función llamada `rmd2md`
+
+3) Ve a la consola de Rstudio(panel inferior izquierda) y llama a la función que has creado; es decir, escribe lo siguiente en la consola:  `rmd2md()` y dale al enter (ejecuta la instrucción)  
+
+Se necesita que este instalado el package `knitr` pero prácticamente que ya lo tienes instalado   
+
+Si todo marcha OK, podrás ver que en la carpeta `_posts` se habrá creado un fichero .md llamado `2016-01-14-mi-primer-post`   
+
+
+ya esta todo, solo queda subir los cambios a Github, ya sabes (pasos 11 a 14)
+
+
+
+Espero que te animes a crear tu Jekyll blog y que el tutorial funcione. May the force be with you!!  
+
+Para poder entender este post has de saber un poco de R, RStudio, pero yo creo que en 10 minutos tu blog está operativo.  
+
+
+Si lo haces déjame un comentario. Quiero ver como se gestiona esto de los comentarios con Disqus   
+
+
+PD: para borrar mi post `Hola mundo!!` tienes que borrar el fichero .Rmd y commit a Github (pasos 11 a 14)
+ 
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
