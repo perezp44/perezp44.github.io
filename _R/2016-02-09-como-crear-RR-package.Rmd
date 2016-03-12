@@ -193,8 +193,7 @@ print_pepe.pjp()
 ```
 
 
-SÍ, it works!!!, pero tengo un Pb con la documentación roxygen. Yo que creía que viendo el ejemplo de Hilary era bastante, pero no, me va a tocar leer algo de roxygen2. Aquí se aprende como en la vida , a golpes o si te ayuda, con tu papi.  
-Me ha venido la inspiración, ¿a que no tenia cargado el package roxygen?   No, no era eso, me tocara mirarlo     
+SÍ, it works!!!, pero tengo un Pb con la documentación roxygen. Yo que creía que viendo el ejemplo de Hilary era bastante, pero no, me va a tocar leer algo de roxygen2. Me ha venido la inspiración, ¿a que va a ser que no tenia cargado el package roxygen?   No, no era eso, me tocará mirarlo     
 
 Ahora tengo que subir el post y tampoco me acuerdo... pero "R & flowers" lo explica bien      
 Si lo  ves es que pude. ya arreglaré el post. Desde luego, primero difícil que alguien lo lea, pero si alguien consigue, siguiendo solo mis indicaciones, crearse un package es que es uno genio. Igual dentro de 1 mes no lo entiendo ni yo, pero ya no le dedico mas tiempo, que esto es para aprender no para patir     

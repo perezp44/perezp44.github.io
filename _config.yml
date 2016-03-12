@@ -5,7 +5,7 @@ locale:           en_US
 url:              http://perezp44.github.io
 # url:              http://localhost:4000
 
-name: pjp BLOG
+name: R & flowers blog
 description: Blog on R & computing & flowers (for myself)
 
 # Jekyll configuration
