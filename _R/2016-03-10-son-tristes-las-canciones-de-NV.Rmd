@@ -49,7 +49,7 @@ letras <- c(letra_ocho, letra_alnorte, letra_simon, letra_brujita, letra_nuevavi
 
 ```  
 
-Bueno, aunque no lo hayáis visto, he cargado las letras de 6 canciones. ¿Para qué he hecho la votación?. Meto las letras en un vector:  
+Bueno, aunque no lo hayáis visto, he cargado las letras de 6 canciones. ¿Para qué he hecho la votación? Meto las letras en un vector:  
 
 
 
@@ -105,16 +105,16 @@ print(sentiment_NV[,1:8])
 ```  
 Como podéis ver, **Ocho y medio** se lleva la palma: puntúa en todo, tiene 3 puntos en tristeza y 4 en miedo pero también 1 en joy (¿eh?!, pero si la tabla no pone 1 punto en joy) 
 
-Notita al margen: Ese punto de joy del que hablo no aparece en el cuadro de arriba por un detalle técnico que no quiero/puedo resolver: no sé que pasa con las tildes al pasar el post por jekyll, pero juro y perjuro que 8 y 1/2 tenía un puntito en joy. Más adelante hay más fallos de concordancia entre las puntuaciones de las tablas y el texto. En realidad salé todo como dice el texto, pero aquí, al pasarlo por Jekyl no me quita las tildes y eso hace que las palabras se clasifiquen de forma distinta.      
+Notita al margen: Ese punto de joy del que hablo no aparece en el cuadro de arriba por un detalle técnico que no quiero/puedo resolver: no sé que pasa con las tildes al pasar el post por jekyll, pero juro y perjuro que 8 y 1/2 tenía un puntito en joy. Más adelante hay más fallos de concordancia entre las puntuaciones de las tablas y el texto. En realidad salé todo como dice el texto, pero aquí, al pasarlo por Jekyl no me quita las tildes y eso hace que las palabras se clasifiquen de forma distinta.  Creo que tiene que ver con la codificación cuando kniteo la .R file, creo que debería poner UTF-8.    
 
-Veamos el indice de tristeza/alegría ¿qué canción ganará?
+Veamos el índice de tristeza/alegría ¿que canción ganará?
 
 ```{r print2, eval=TRUE, echo=T}    
 print(sentiment_NV[,9:10])
 ```  
 Pues **8 y medio** gana de calle en palabros tristes/negativos (6), PERO también tiene 4 happies ... 
 
-NV, lo siento, todas tus canciones tienen al menos un punto negativo, así que .... peo, un momento, quizás debamos compararlo con otro cantante, ¿cual? NPI , ya ... Serrat y Mediterráneo.   
+NV, lo siento, todas tus canciones tienen al menos un punto negativo, así que .... **pero**, un momento, todo en esta vida es relativo, quizás debamos compararlo con otro cantante, ¿cual? NPI , ya ... Serrat y Mediterráneo.   
 
 Vamos allá, repito el análisis incorporando mediterráneo de Serrat:
 
@@ -148,9 +148,9 @@ Y de tristeza/ alegría:
 #sentiment_NV3 <- as.data.frame(sentiment_NV2) %>% arrange(desc(negative))
 print(sentiment_NV2[,9:10])
 ``` 
-Como veis mediterráneo tiene 2 puntos de tristeza. Sí, también 2 puntos de alegría, pero gana en tristeza a todas las de NV excepto 8 y 1/2 y Al Norte; es decir, las otras 4 de NV son menos tristes que Mediterráneo: 4/6 es un  `r round(4/6*100, digits=2)` % 
+Como veis mediterráneo tiene 2 puntos de tristeza. Sí, también 2 puntos de alegría, pero gana en tristeza a todas las de NV excepto 8 y 1/2 y Al Norte; es decir, las otras 4 canciones de NV son menos tristes que Mediterráneo: 4/6 es un  `r round(4/6*100, digits=2)` % 
 
-Hasta aquí mi análisis de sentimientos de canciones de NV. Ya os dije que aprendería PNL en mi nueva vida, ahora solo intento sobrevivir. 
+Hasta aquí mi análisis de sentimientos de canciones de NV. Ya os dije que aprendería PNL en mi nueva vida, ahora que parece ser que va a llover sólo tengo un ambicioso plan, consistente en sobrevivir. 
 
 
 
@@ -177,7 +177,7 @@ wordcloud(dm$word, dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
 
 ```  
 
-¿Como quedaría el gráfico de palabros si juntamos las 6 de NV con mediterráneo? Pues así: 
+¿Como quedaría el gráfico de palabros si juntamos las 6 de NV con Mediterráneo? Pues así: 
 ```{r corpus_me, eval=TRUE, echo=F}    
 corpus2 = Corpus(VectorSource(letras2))   #- construye un corpus
 corpus2 = tm_map(corpus2, content_transformer(tolower))  #- a minusculas
@@ -190,7 +190,7 @@ wf2 <- sort(rowSums(m2),decreasing=TRUE) #- conteo de palabras en orden decrecie
 dm2 <- data.frame(word = names(wf2), freq=wf2) #- crea un df con las palabras y sus frecuencias
 wordcloud(dm2$word, dm2$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"))
 ```  
-Salen un poco pequeñitos los gráficos. ya los arreglaré.  
+Salen un poco pequeñitos los gráficos. Ya los arreglaré.  
 
 Eh!! Un momento, si no aparece la palabra Mediterráneo!! Así es, sorprendentemente Mediterraneo solo nombra 2 veces al (M)mediterráneo. Brujita aparece 4 veces y las que mas aparece en las 7 canciones es: ahora, vida y nueva. Mas de 40 veces!
 
