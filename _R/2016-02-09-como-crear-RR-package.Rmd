@@ -104,7 +104,7 @@ Una vez tienes escrita la documentación de tu script donde está la función, h
 
 ```{r dos_3, eval = FALSE}
 #- recuerda que el package se ha creado en "C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp" 
-#- lo primero es situarnos en ese directorio, para ello, como estamos en "C:/Users/perezp/Desktop/a_GIT_2016/" , hayq eu ejecutar:
+#- lo primero es situarnos en ese directorio, para ello, como estamos en "C:/Users/perezp/Desktop/a_GIT_2016/" , hay que ejecutar:  
 setwd("./personal.pjp")
 document()   #- ya ha creado la documentacion. Guarda un fichero para cada función del package en el directorio /man del package
 ```  
@@ -164,12 +164,25 @@ Sí, parece que se instala, pero, a la hora de pedirle que me muestre la documen
 
 #### 8) Modificando y actualizando mi personal package
 
-Voy a probar a añadir una función, muy sencilla para probar `print_pepe()`.Para ello:
+Voy a probar a añadir una función, muy sencilla para probar `print_pepe()`.Para ello:  
 
-1) Crear un script con la funcion y ponerlo en la carpeta local donde esta el package. Acuerdate de la documentación con roxygen     
-2) Situar el working directory en tu package: `setwd("C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp" )`   
-3) Genera la documentación desde RStudio con la f. `document()` 
-4) has de volver a Git Bash y, como el package ya esta en Github, solo es subir los cambios. Para ello:    
+
+1) Crear un script con la funcion y ponerlo en la carpeta local donde está el package. En mi caso en `C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp` Acuérdate de la documentación con roxygen. 
+
+
+2) Situar el working directory en tu package: `setwd("C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp" )`    
+
+3) Genera la documentación de la funcón desde RStudio con la f. `document()`    
+
+```
+library("devtools")  
+devtools::install_github("klutometis/roxygen")  
+library(roxygen2)
+document() 
+```
+
+
+4) has de volver a Git Bash y, como el package ya esta en Github, solo es subir los cambios. Para ello:     
 
 Como yo trabajo en 2 ordenadores, está bien antes de subir a Github los cambios hechos en un PC, ver si tu copia local está al día, y esto se hace en Git Bash con: `git pull origin master`. Lógicamente primero has de estar en la carpeta del proyecto que estas trackeando.
 

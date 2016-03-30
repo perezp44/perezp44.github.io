@@ -1,2 +1,5 @@
 base
 knitr
+roxygen2
+devtools
+personal.pjp
