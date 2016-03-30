@@ -63,6 +63,16 @@ Si el blog ya está operátivo en Github y sólo vas a añadir un post nuevo o c
   git push -u origin master    
 ```  
 
+Como trabajo con 2 ordenadores, antes de subir el post es bueno asegurarse que la local granch que tienes en el PC esta al idea con la master branch en Github   ¿Cómo?:   
+
+```{r dos2, eval = FALSE}
+  cd c:/Users/perezp/Desktop/a_R_2016/perezp44.github.io  
+  git pull origin master    
+```  
+
+
+
+
 <br>
 
 
