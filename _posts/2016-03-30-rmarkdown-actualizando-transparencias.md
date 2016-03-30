@@ -103,8 +103,13 @@ Si quieres poner un **H1 header en color**, puedes escribirlo directamente en HT
 {% highlight r %}
  <center><h1 style="color:darkblue;"><big><b>Introduccion practica a</br> R y RStudio<br> INTRODUCCION</h1></b></big></center> 
 {% endhighlight %}
-y se verá algo como:   
-<center><h1 style="color:darkblue;"><big><b>Introduccion práctica a</br> Rmarkdown, knitr y pandoc</h1></b></big></center>
+
+y se verá algo como: 
+
+<center><h1 style="color:darkblue;"><big><b>Introduccion práctica a</br> Rmarkdown, knitr y pandoc</h1></b></big></center>  
+
+
+<br>
 
 ------------------------     
 

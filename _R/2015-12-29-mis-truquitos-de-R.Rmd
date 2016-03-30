@@ -4,7 +4,7 @@ title: "Recopilación de trucos/cozitas de R"
 author: Pedro J. Perez
 description: 
 category: r
-tags: [Truquitos, R]
+tags: [Truquitos, R, In progress]
 comments: true
 ---
 
