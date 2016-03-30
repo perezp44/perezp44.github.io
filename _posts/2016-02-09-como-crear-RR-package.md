@@ -173,7 +173,8 @@ Voy a probar a añadir una función, muy sencilla para probar `print_pepe()`.Par
 1) Crear un script con la funcion y ponerlo en la carpeta local donde está el package. En mi caso en `C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp` Acuérdate de la documentación con roxygen. 
 
 
-2) Situar el working directory en tu package: `setwd("C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp" )`    
+2) Situar el working directory en tu package: `setwd("C:/Users/perezp/Desktop/a_GIT_2016/personal.pjp" )`  
+
 
 3) Genera la documentación de la funcón desde RStudio con la f. `document()`    
 
@@ -182,10 +183,23 @@ library("devtools")
 devtools::install_github("klutometis/roxygen")  
 library(roxygen2)
 document() 
+devtools::document()   #- tampoco así me crea bien la documentacion
+```  
+
+4) si quieres probar (antes de subirlo a Github) si el package funciona en Local, debes hacer:   
+
+```
+setwd("C:/Users/perezp/Desktop/a_GIT_2016/" )  
+install("personal.pjp")  #- lo instalas desde local
+library(personal.pjp)
+ls(name = "package:personal.pjp") #- debe salir la nueva funcion
+
+
 ```
 
 
-4) has de volver a Git Bash y, como el package ya esta en Github, solo es subir los cambios. Para ello:     
+
+5) Para subirlo a Github, has de volver a Git Bash y, como el package ya esta en Github, solo es subir los cambios. Para ello:     
 
 Como yo trabajo en 2 ordenadores, está bien antes de subir a Github los cambios hechos en un PC, ver si tu copia local está al día, y esto se hace en Git Bash con: `git pull origin master`. Lógicamente primero has de estar en la carpeta del proyecto que estas trackeando.
 
@@ -201,7 +215,7 @@ Como yo trabajo en 2 ordenadores, está bien antes de subir a Github los cambios
 
 
 Ahora es la hora de verdad: 
-Para instalarlo solo hay que usar la función `install_github()`:
+Para instalarlo solo hay que usar la función `install_github()`:   
 
 {% highlight r %}
 library(devtools)
