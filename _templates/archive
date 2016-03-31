@@ -1,5 +1,5 @@
 ---
-layout: progre-index
+layout: post-index
 title: {{ title }}
 permalink:
 modified:
