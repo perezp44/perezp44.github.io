@@ -34,24 +34,24 @@
   </div>
   <div id="index">
     <h1>{{ page.title }}</h1>
-    {% for post_html_pjp in site.posts %}  
-    {% unless post_html_pjp.next %}
-      <h3>{{ post_html_pjp.date | date: '%Y' }}</h3>
+    {% for postpjp in site.posts_pjp %}  
+    {% unless postpjp.next %}
+      <h3>{{ postpjp.date | date: '%Y' }}</h3>
       {% else %}
-        {% capture year %}{{ post_html_pjp.date | date: '%Y' }}{% endcapture %}
-        {% capture nyear %}{{ post_html_pjp.next.date | date: '%Y' }}{% endcapture %}
+        {% capture year %}{{ postpjp.date | date: '%Y' }}{% endcapture %}
+        {% capture nyear %}{{ postpjp.next.date | date: '%Y' }}{% endcapture %}
         {% if year != nyear %}
-          <h3>{{ post_html_pjp.date | date: '%Y' }}</h3>
+          <h3>{{ postpjp.date | date: '%Y' }}</h3>
         {% endif %}
       {% endunless %}
     <article>
-      {% if post_html_pjp.link %}
-        <h2 class="link-post_html_pjp"><a href="{{ site.url }}{{ post_html_pjp.url }}" title="{{ post_html_pjp.title }}">{{ post_html_pjp.title }}</a> <a href="{{ post_html_pjp.link }}" target="_blank" title="{{ post_html_pjp.title }}"><i class="fa fa-link"></i></h2>
+      {% if postpjp.link %}
+        <h2 class="link-postpjp"><a href="{{ site.url }}{{ postpjp.url }}" title="{{ postpjp.title }}">{{ postpjp.title }}</a> <a href="{{ postpjp.link }}" target="_blank" title="{{ postpjp.title }}"><i class="fa fa-link"></i></h2>
       {% else %}
-        <h2><a href="{{ site.url }}{{ post_html_pjp.url }}" title="{{ post_html_pjp.title }}">{{ post_html_pjp.title }}</a>
-        <p class = "dateline">{{ post_html_pjp.date | date: "%B %d, %Y" }}</span>
+        <h2><a href="{{ site.url }}{{ postpjp.url }}" title="{{ postpjp.title }}">{{ postpjp.title }}</a>
+        <p class = "dateline">{{ postpjp.date | date: "%B %d, %Y" }}</span>
 </h2>
-        <p>{{ post_html_pjp.description | strip_html | truncate: 500 }}</p>
+        <p>{{ postpjp.description | strip_html | truncate: 500 }}</p>
       {% endif %}
     </article>
     {% endfor %}

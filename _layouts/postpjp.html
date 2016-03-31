@@ -9,7 +9,7 @@
 {% if page.og_image %}<meta property="og:image" content="{{ page.og_image }}">{% endif %}
 </head>
 
-<body class="post">
+<body class="postpjp">
 
 {% include _browser-upgrade.html %}
 
@@ -34,7 +34,7 @@
   <div class="article-author-side">
     {% include _author-bio.html %}
   </div>
-  <article class="post">
+  <article class="postpjp">
     <div class="headline-wrap">
       {% if page.link %}
         <h1><a href="{{ page.link }}">{{ page.title }}</a></h1>
@@ -58,20 +58,7 @@
   </article>
 </div><!-- /#main -->
 
-<div class="footer-wrap">
-  <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/posts/">View all posts</a>)</small></h4>
-    <ul>
-    {% for post in site.related_posts limit:3 %}
-      <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-    {% endfor %}
-    </ul>
-    <hr />
-  </div><!-- /.related-articles -->
-  <footer>
-    {% include _footer.html %}
-  </footer>
-</div><!-- /.footer-wrap -->
+
 
 {% include _scripts.html %}	        
 
