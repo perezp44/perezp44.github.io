@@ -1,10 +1,9 @@
 ---
-layout: page
+layout: post-index-html-pjp
 title: In progress(**)
-tags: [html]
-comments: false
+excerpt: "A List of Posts (in progress)"
+
 ---
 
-Aqui quiero poner post SIEMPRE en progreso. Son recopilación de cosas que voy aprendiendo de R, etc.....
-
-Ademas los voy a subir directamente en HTML. Los genero en html y les pongo un YAML header y un .md en Notepad++ y los dejo en su carpeta mis enlaces a rachivos html que genere con mis tutoriales (for me)
+Aquí quiero poner post SIEMPRE en progreso. Son recopilación de cosas que voy aprendiendo de R, etc.....
+Además los voy a subir directamente en HTML. Los genero en html y les pongo un YAML header y un .md en Notepad++ y los dejo en su carpeta.
