@@ -7,7 +7,7 @@
 {% include _head.html %}
 </head>
 
-<body class="post-index-html-pjp">
+<body class="progre-index">
 
 {% include _browser-upgrade.html %}
 
@@ -34,24 +34,24 @@
   </div>
   <div id="index">
     <h1>{{ page.title }}</h1>
-    {% for postpjp in site.postspjp %}  
-    {% unless postpjp.next %}
-      <h3>{{ postpjp.date | date: '%Y' }}</h3>
+    {% for progre in site.progres %}  
+    {% unless progre.next %}
+      <h3>{{ progre.date | date: '%Y' }}</h3>
       {% else %}
-        {% capture year %}{{ postpjp.date | date: '%Y' }}{% endcapture %}
-        {% capture nyear %}{{ postpjp.next.date | date: '%Y' }}{% endcapture %}
+        {% capture year %}{{ progre.date | date: '%Y' }}{% endcapture %}
+        {% capture nyear %}{{ progre.next.date | date: '%Y' }}{% endcapture %}
         {% if year != nyear %}
-          <h3>{{ postpjp.date | date: '%Y' }}</h3>
+          <h3>{{ progre.date | date: '%Y' }}</h3>
         {% endif %}
       {% endunless %}
     <article>
-      {% if postpjp.link %}
-        <h2 class="link-postpjp"><a href="{{ site.url }}{{ postpjp.url }}" title="{{ postpjp.title }}">{{ postpjp.title }}</a> <a href="{{ postpjp.link }}" target="_blank" title="{{ postpjp.title }}"><i class="fa fa-link"></i></h2>
+      {% if progre.link %}
+        <h2 class="link-progre"><a href="{{ site.url }}{{ progre.url }}" title="{{ progre.title }}">{{ progre.title }}</a> <a href="{{ progre.link }}" target="_blank" title="{{ progre.title }}"><i class="fa fa-link"></i></h2>
       {% else %}
-        <h2><a href="{{ site.url }}{{ postpjp.url }}" title="{{ postpjp.title }}">{{ postpjp.title }}</a>
-        <p class = "dateline">{{ postpjp.date | date: "%B %d, %Y" }}</span>
+        <h2><a href="{{ site.url }}{{ progre.url }}" title="{{ progre.title }}">{{ progre.title }}</a>
+        <p class = "dateline">{{ progre.date | date: "%B %d, %Y" }}</span>
 </h2>
-        <p>{{ postpjp.description | strip_html | truncate: 500 }}</p>
+        <p>{{ progre.description | strip_html | truncate: 500 }}</p>
       {% endif %}
     </article>
     {% endfor %}

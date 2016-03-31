@@ -9,7 +9,7 @@
 {% if page.og_image %}<meta property="og:image" content="{{ page.og_image }}">{% endif %}
 </head>
 
-<body class="postpjp">
+<body class="progre">
 
 {% include _browser-upgrade.html %}
 
@@ -34,7 +34,7 @@
   <div class="article-author-side">
     {% include _author-bio.html %}
   </div>
-  <article class="postpjp">
+  <article class="progre">
     <div class="headline-wrap">
       {% if page.link %}
         <h1><a href="{{ page.link }}">{{ page.title }}</a></h1>
@@ -62,10 +62,10 @@
 <div class="footer-wrap">
 
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/postspjp/">View all posts</a>)</small></h4>
+  <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/progress/">View all progress</a>)</small></h4>
     <ul>
-    {% for postpjp in site.related_posts limit:3 %}
-      <li><a href="{{ site.url }}{{ postpjp.url }}" title="{{ postpjp.title }}">{{ postpjp.title }}</a></li>
+    {% for progre in site.related_progres limit:3 %}
+      <li><a href="{{ site.url }}{{ progre.url }}" title="{{ progre.title }}">{{ progre.title }}</a></li>
     {% endfor %}
     </ul>
     <hr />
