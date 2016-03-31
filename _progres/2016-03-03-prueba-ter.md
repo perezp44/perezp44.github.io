@@ -1,6 +1,6 @@
 ---
 layout: progre
-title: "prueba 55"
+title: "prueba 88"
 author: Pedro J. Perez
 description: "prueba 2 html"
 category: r
