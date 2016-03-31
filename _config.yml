@@ -8,7 +8,7 @@ url:              http://perezp44.github.io
 name: R & flowers blog
 description: Blog on R & computing & flowers (for myself)
 
-# Jekyll configuration
+# Jekyll configuration #-Deprecation: Please change 'use_coderay' to 'enable_coderay' in your configuration file
 
 permalink:   /:categories/:title/
 markdown:    kramdown
@@ -24,7 +24,7 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  use_coderay: false
+  enable_coderay: false
 
 
 # Site owner
