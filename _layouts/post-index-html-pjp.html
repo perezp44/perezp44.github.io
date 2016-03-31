@@ -7,7 +7,7 @@
 {% include _head.html %}
 </head>
 
-<body class="post-index">
+<body class="post-index-html-pjp">
 
 {% include _browser-upgrade.html %}
 
@@ -34,24 +34,24 @@
   </div>
   <div id="index">
     <h1>{{ page.title }}</h1>
-    {% for post in site.posts %}  
-    {% unless post.next %}
-      <h3>{{ post.date | date: '%Y' }}</h3>
+    {% for post_html_pjp in site.posts %}  
+    {% unless post_html_pjp.next %}
+      <h3>{{ post_html_pjp.date | date: '%Y' }}</h3>
       {% else %}
-        {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-        {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+        {% capture year %}{{ post_html_pjp.date | date: '%Y' }}{% endcapture %}
+        {% capture nyear %}{{ post_html_pjp.next.date | date: '%Y' }}{% endcapture %}
         {% if year != nyear %}
-          <h3>{{ post.date | date: '%Y' }}</h3>
+          <h3>{{ post_html_pjp.date | date: '%Y' }}</h3>
         {% endif %}
       {% endunless %}
     <article>
-      {% if post.link %}
-        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
+      {% if post_html_pjp.link %}
+        <h2 class="link-post_html_pjp"><a href="{{ site.url }}{{ post_html_pjp.url }}" title="{{ post_html_pjp.title }}">{{ post_html_pjp.title }}</a> <a href="{{ post_html_pjp.link }}" target="_blank" title="{{ post_html_pjp.title }}"><i class="fa fa-link"></i></h2>
       {% else %}
-        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        <p class = "dateline">{{ post.date | date: "%B %d, %Y" }}</span>
+        <h2><a href="{{ site.url }}{{ post_html_pjp.url }}" title="{{ post_html_pjp.title }}">{{ post_html_pjp.title }}</a>
+        <p class = "dateline">{{ post_html_pjp.date | date: "%B %d, %Y" }}</span>
 </h2>
-        <p>{{ post.description | strip_html | truncate: 500 }}</p>
+        <p>{{ post_html_pjp.description | strip_html | truncate: 500 }}</p>
       {% endif %}
     </article>
     {% endfor %}
