@@ -10,6 +10,6 @@ Esta parte es totalmente de uso exclusivo mio (please get away!! :). Es simpleme
 
 
 2) Escribir un post con lo (poco) que se de Git : aunque ahora resulta que creo que usaré SourceTree  
-3) Escribir un post de como hacer un R package  
+3) Tengo que meter en mi personal package la funcion que mira los casos unicos de cada columa de un df. Lo tengo hecho en my_my_eurostat 
 4) Datos Erasmus
 
