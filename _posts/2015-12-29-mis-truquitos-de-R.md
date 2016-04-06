@@ -14,7 +14,7 @@ En este post iré recopilando cosas que voy aprendiendo de R que creo que me pue
 
 Este post lo empecé a escribir el 30 de marzo de 2016 pero lo voy a poner despues de hello worls (en 2015), y lo voy a ir actualizando conforme vaya recopilando los truquitos. Muchos los tengo/tenía ya en un archivo pero no estaban subidos al blog.    
 
-La fecha de compilación del post es [2016-03-30]
+La fecha de compilación del post es [2016-04-03]
 
 
 ------------------------ 
@@ -122,3 +122,76 @@ servr::httd(dir = "C:/Users/perezp/Desktop/a_GIT_2016/perezp44.github.io/"  )
 ```
 
 Hice lo de arriba y me creo como una pagina web de "todo" mi PC
+
+------------------------ 
+
+<br>  
+
+**LOADING LIBRARIES**:   
+Escrito el: 2016-03-30
+
+
+```
+libs <- c("dplyr", "ggplot2", "pwt8", "sfsmisc", "personal.pjp")
+sapply(libs, library, character.only = TRUE, logical.return = TRUE)
+rm(libs)
+```
+
+
+{% highlight r %}
+#- Loading eurostat package
+if (!require(eurostat)) {install_github("ropengov/eurostat")}     #- installing
+library(eurostat)                                                 #- loading
+if (!require(forecast)) {install.packages("forecast")}            #- installing
+{% endhighlight %}
+
+
+{% highlight r %}
+PACKAGES <- c("eurostat","ggplot2","countrycode","tidyr","dplyr","knitr")
+#  Install packages
+inst <- match(PACKAGES, .packages(all=TRUE))  #- mira si hay un match
+need <- which(is.na(inst))
+if (length(need) > 0) install.packages(PACKAGES[need])
+# Load packages
+lapply(PACKAGES, require, character.only=T)
+{% endhighlight %}
+
+------------------------ 
+
+<br>  
+
+**Creating directories**:   
+Escrito el: 2016-03-30
+
+
+{% highlight r %}
+# create folders
+dir.create("./zip/", recursive = TRUE)  #- en el wd
+{% endhighlight %}
+
+
+------------------------ 
+
+<br>  
+
+**VER las f. que tiene un package**:   
+Escrito el: 2016-03-30
+
+
+
+{% highlight r %}
+funs.eurostat <- as.data.frame(ls("package:eurostat"))   #- las f. del package
+{% endhighlight %}
+
+
+------------------------ 
+
+<br>  
+
+**VER las f. que tiene un package**:   
+Escrito el: 2016-03-30
+
+Estaba intentando resolver un Pb en R y me he encontrado con esto:  
+<http://r.789695.n4.nabble.com/Extending-a-vector-to-length-n-td886064.html>   
+En unos años puedo ser Hadley Wickham. Lo veo claro!!   
+

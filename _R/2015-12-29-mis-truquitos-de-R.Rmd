@@ -89,3 +89,72 @@ servr::httd(dir = "C:/Users/perezp/Desktop/a_GIT_2016/perezp44.github.io/"  )
 ```
 
 Hice lo de arriba y me creo como una pagina web de "todo" mi PC
+
+------------------------ 
+
+<br>  
+
+**LOADING LIBRARIES**:   
+Escrito el: 2016-03-30
+
+
+```
+libs <- c("dplyr", "ggplot2", "pwt8", "sfsmisc", "personal.pjp")
+sapply(libs, library, character.only = TRUE, logical.return = TRUE)
+rm(libs)
+```
+
+```{r loading_eurostat, echo = T, eval = F}
+#- Loading eurostat package
+if (!require(eurostat)) {install_github("ropengov/eurostat")}     #- installing
+library(eurostat)                                                 #- loading
+if (!require(forecast)) {install.packages("forecast")}            #- installing
+```
+
+```{r, eval = F}
+PACKAGES <- c("eurostat","ggplot2","countrycode","tidyr","dplyr","knitr")
+#  Install packages
+inst <- match(PACKAGES, .packages(all=TRUE))  #- mira si hay un match
+need <- which(is.na(inst))
+if (length(need) > 0) install.packages(PACKAGES[need])
+# Load packages
+lapply(PACKAGES, require, character.only=T)
+```
+
+------------------------ 
+
+<br>  
+
+**Creating directories**:   
+Escrito el: 2016-03-30
+
+```{r create_directory, echo = T, eval = F}
+# create folders
+dir.create("./zip/", recursive = TRUE)  #- en el wd
+```
+
+
+------------------------ 
+
+<br>  
+
+**VER las f. que tiene un package**:   
+Escrito el: 2016-03-30
+
+
+```{r , echo = T, eval = F}
+funs.eurostat <- as.data.frame(ls("package:eurostat"))   #- las f. del package
+```
+
+
+------------------------ 
+
+<br>  
+
+**VER las f. que tiene un package**:   
+Escrito el: 2016-03-30
+
+Estaba intentando resolver un Pb en R y me he encontrado con esto:  
+<http://r.789695.n4.nabble.com/Extending-a-vector-to-length-n-td886064.html>   
+En unos años puedo ser Hadley Wickham. Lo veo claro!!   
+
