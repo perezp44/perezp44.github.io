@@ -105,7 +105,7 @@ Si quieres poner un **H1 header en color**, puedes escribirlo directamente en HT
 ```{r, eval= F}
  <center><h1 style="color:darkblue;"><big><b>Introduccion practica a</br> R y RStudio<br> INTRODUCCION</h1></b></big></center> 
 ```   
-
+Aunque es mejor definir estilos al ppio del documento.  
 
 <br>
 
@@ -239,20 +239,75 @@ summary(cars)
 
 <br>  
 
-Para introducir **estilos** sin tener que tener una CSS file htttp://stackoverflow.com/questions/34022558/r-markdown-how-to-change-style-with-internal-css  
+Para introducir **estilos** sin tener que tener una CSS file propia   htttp://stackoverflow.com/questions/34022558/r-markdown-how-to-change-style-with-internal-css  
 
 ```
 Después del YAML header tienes que:
 
 <style>
-    #header1 {
-        color: red;
-    }
+    #header1 {color: red;}
 </style>  
 
  y después poner el estilo, asín: 
-## Header 1 {#header1}
+## Header 1 {#header1}   #- funciona pero me ponía en red toda la seccion, asi que es mejor hacerlo como digo mas abajo
 ```
+
+
+Estilos que estoy usando en mis transparencias:  
+
+```
+<style>
+  p {margin: 15px 0 17px 0;}  #- "Margenes entre parrafos"    top, izquierda, abajo, left
+</style> 
+
+<style>
+  body { line-height:2.0;}   #- anchura de las lineas 1.0 is the default in Firefox. 2.0 provides a large space
+</style>
+  
+<style>
+  h1, h2, h3, h4, h5  {color:darkblue;}  #- esto me hace los h1, h2 ... en dark blue
+</style>  
+```
+
+
+
+
+
+
+Otros estilos que me han sido utiles:
+
+```
+#- En lugar de usar una CSS file puedes definir estilos al  ppio del .Rmd     
+#-- lo puedes poner al ppio de tu .Rmd (debajo del YAML)
+
+h1, h2, h3 {font-family: tahoma, color: #333} 
+  
+<style>
+  para_1{border: 1px solid grey; padding: 10px; }   #- pone un cuadro alrededor del texto
+</style>
+    
+  
+<style>
+  p {margin-top: 0em; margin-bottom: 2em; }   #- espaciado entre parrafos
+</style> 
+```
+
+
+Si en lugar de definir estilos quieres usar tu propia CSS file:
+
+```
+#- puedes usar tu propia CSS file. Lo has de especificar en el YAML
+#- La file  CSS que usa markdown esta en la lib de R dentro de Markdown
+------ 
+output: 
+  html_document: 
+  css: C:/Users/perezp/Desktop/CSS/markdown.css
+-------
+```
+
+
+
+
 
 
 
