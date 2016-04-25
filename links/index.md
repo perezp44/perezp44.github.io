@@ -16,7 +16,8 @@ Some useful links for me. Generalmente serán links temporales para usar mientra
 - [rstatistics](http://rstatistics.net/) : http://rstatistics.net/ 
 - [r-statistics](http://r-statistics.co/)  : http://r-statistics.co/
 - [R for Data Science](http://r4ds.had.co.nz/)  : http://r4ds.had.co.nz/
-- [Youtube Econometrics course](https://www.youtube.com/playlist?list=PLwJRxp3blEvZyQBTTOMFRP_TDaSdly3gU&feature=mh_lolz)   : https://www.youtube.com/playlist?list=PLwJRxp3blEvZyQBTTOMFRP_TDaSdly3gU&feature=mh_lolz
-- [datacience+](datascienceplus.com/)
+- [Youtube Econometrics course](https://www.youtube.com/playlist?list=PLwJRxp3blEvZyQBTTOMFRP_TDaSdly3gU&feature=mh_lolz)   
+- [datacience+](datascienceplus.com/) 
+- [Youtube R course](https://www.youtube.com/playlist?list=PLRW9kMvtNZOiXeaU8JaFIu-Rj1G6UmMsz)
 
 ###### TEMPORALES

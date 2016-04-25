@@ -14,7 +14,7 @@ En este post iré recopilando cosas que voy aprendiendo de R que creo que me pue
 
 Este post lo empecé a escribir el 30 de marzo de 2016 pero lo voy a poner despues de hello worls (en 2015), y lo voy a ir actualizando conforme vaya recopilando los truquitos. Muchos los tengo/tenía ya en un archivo pero no estaban subidos al blog.    
 
-La fecha de compilación del post es [2016-04-03]
+La fecha de compilación del post es [2016-04-25]
 
 
 ------------------------ 
@@ -188,10 +188,117 @@ funs.eurostat <- as.data.frame(ls("package:eurostat"))   #- las f. del package
 
 <br>  
 
-**VER las f. que tiene un package**:   
+**Aun puedo ser Hadley!!**:   
 Escrito el: 2016-03-30
 
 Estaba intentando resolver un Pb en R y me he encontrado con esto:  
 <http://r.789695.n4.nabble.com/Extending-a-vector-to-length-n-td886064.html>   
 En unos años puedo ser Hadley Wickham. Lo veo claro!!   
+
+
+------------------------ 
+
+<br>  
+
+**Guardar df en . XLXS EXCEL**:   
+Escrito el: 2016-03-30
+Hay varios packages. Cuando hice el aplicativo de forecast las use y me funcionaban. Tanto en cas como despacho. Ahora solo me funciona la ultima (al menos en casa)
+
+
+{% highlight r %}
+#- 1) con xlsx  (no chuta por algo de Java)
+library(xlsx)
+write.xlsx(GDP_tot_a, "C:/users/perezp/Desktpo/namq_10_gdp.xlsx", sheetName="namq_10_gdp") #- no me chuta Java   
+#- 2)   (no chuta x algo de PERL)
+library(WriteXLS)
+testPerl(perl = "perl", verbose = TRUE) #- tienes que tener Perl
+WriteXLS("GDP_tot", "C://users/perezp/Desktpo/namq_10_gdp.xlsx",  col.names = T)  #- tampoco vale pasa algo a PERL  
+
+3)- EL QUE ME FUNCIONA (XLCONNECT) (al menos en casa)
+#- http://altons.github.io/r/2015/02/13/quick-intro-to-xlconnect/#install
+install.packages("XLConnect")
+require(XLConnect)
+file_name =  loadWorkbook("../data/xlconnect1.xlsx",create=T)
+createSheet(file_name,"sheet_name") #- 
+writeWorksheet(file_name,df,"sheet_name")
+saveWorkbook(file_name,"C://users/perezp/Desktop/namq_10_gdp.xlsx")
+#- buano, al final el file_name se lo doy entre comilla , el "name_file" solo era el nombre de la conexión
+{% endhighlight %}
+------------------------ 
+
+<br>  
+
+**CLEAR the R CONSOLE**:   
+Escrito el: 2016-03-30
+
+
+{% highlight r %}
+cat("\014")       #- clear the console
+{% endhighlight %}
+
+
+------------------------ 
+
+<br>  
+
+**Create explicit data frames and TS objects given a list**:   
+Escrito el: 2016-03-30
+
+
+{% highlight r %}
+market.list<- c("GR","CY","RU","RO","PL","UA","ROW")
+for (i in market.list) {
+  tmp <- subset(data,Market==i)
+  tmp<-ts(tmp) # It's a timeseries afterall...
+  # Let's save the data somewhere so we don't get back all the time
+  filename <- paste("data_", i, sep="")
+  assign(filename, tmp)
+  save(filename, file=paste(filename, ".rda",sep=""))
+{% endhighlight %}
+
+
+
+------------------------ 
+
+<br>  
+
+**SAVING & loading .RDATA**:      
+Escrito el: 2016-03-30   
+It’s also possible to save multiple objects into an single file, using the RData format.
+
+
+{% highlight r %}
+# Saving multiple objects in binary RData format
+save(data, file="data.RData")
+# Or, using ASCII format
+save(data, file="data.RData", ascii=TRUE)
+# Can save multiple objects
+save(data, data1, file="data.RData")
+
+# To load the data again:
+load("data.RData")
+{% endhighlight %}
+
+------------------------ 
+
+<br>  
+
+
+**Get Environment Variables**:   
+Escrito el: 2016-03-30
+
+
+
+
+
+
+
+
+
+
+Find your R home directory from the command line with Sys.getenv("R_Home")
+
+{% highlight r %}
+Sys.getenv(x = NULL, unset = "", names = NA)
+{% endhighlight %}
 
