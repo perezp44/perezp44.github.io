@@ -32,4 +32,4 @@ This site is powered by [Jekyll](http://jekyllrb.com/) using the [Minimal Mistak
 
 All blog posts are compiled with [knitr](http://yihui.name/knitr/) [R markdown](http://rmarkdown.rstudio.com/) using a modified version of [this script](https://github.com/dgrtwo/dgrtwo.github.com/blob/master/_scripts/knitpages.R) written by [David Robinson](http://varianceexplained.org/). You can find the reproducible sources of each blog post [here](https://github.com/perezp44/perezp44.github.io/tree/master/_R).  
 
-All opinions and views are my own and do not represent my employer.  
+All opinions and views are my own and do not represent my employer. (true) 
