@@ -26,7 +26,7 @@ About This Site
 
 La verdad es que me costó un poquito construir este blog. Fue un proceso que contaré en uno de los post (no quiero olvidarme). 
 
-I made this blog modifying the site from [David Robinson](http://varianceexplained.org/)   
+Al final I made this blog modifying the site from [David Robinson](http://varianceexplained.org/)   
 
 This site is powered by [Jekyll](http://jekyllrb.com/) using the [Minimal Mistakes](http://mademistakes.com/minimal-mistakes/) theme. All blog posts are released under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).  
 
