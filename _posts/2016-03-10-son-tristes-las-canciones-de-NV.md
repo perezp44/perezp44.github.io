@@ -4,7 +4,7 @@ title: "¿Son tristes las canciones de Nacho Vegas? (Sentiment analysis of NV ly
 author: Pedro J. Perez
 description: 
 category: r
-tags: [PNL, flowers]
+tags: [PNL, music, flowers]
 comments: true
 ---
 
