@@ -8,10 +8,7 @@ tags: [Stack Overflow]
 comments: true
 ---
 
-```{r setup, echo = FALSE, warning=FALSE}
-library(knitr)
-opts_chunk$set(message=FALSE, cache=TRUE, warning=FALSE, echo=TRUE, dev="jpeg" )
-```
+
 
 ¿Que qué es [Stack Overflow](http://stackoverflow.com/)? Pues como la Wikipedia para programadores. Siempre que tienes un problema programando vas a Google (o a tu buscador preferido) y googleas y la mayoría de las veces hallas la respuesta en Stack Overflow. Además creo que David Robinson, del cual tomé prestada la plantilla para este blog, trabaja allí.   
 
