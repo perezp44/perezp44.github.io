@@ -34,7 +34,7 @@ Aún no ha sido contestada. La hice el 8 de julio de 2016; o sea, más de tres m
 
 Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 badges y soy `student`. En la imagen de bajo se ve.  
 
-![](/images/reputacion.PNG)
+![](/figs/reputacion.PNG)
 
 Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día.
 
