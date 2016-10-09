@@ -12,7 +12,7 @@ comments: true
 
 ¿Que qué es [Stack Overflow](http://stackoverflow.com/)? Pues como la Wikipedia para programadores. Siempre que tienes un problema programando vas a Google (o a tu buscador preferido) y googleas y la mayoría de las veces hallas la respuesta en Stack Overflow. Además creo que David Robinson, del cual tomé prestada la plantilla para este blog, trabaja allí.   
 
-Veamos que dice la Wikipedia de Stack:
+Veamos que dice la Wikipedia de Stack Overflow:
 
 
 > Stack Overflow es un sitio web desarrollado por Jeff Attwood, este sitio web es utilizado por una comunidad de desarrolladores informáticos, en la cual otros desarrolladores pueden encontrar soluciones a problemas de programación en diferentes lenguajes. 
