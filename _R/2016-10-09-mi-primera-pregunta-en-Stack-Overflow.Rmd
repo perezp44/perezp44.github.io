@@ -37,9 +37,9 @@ Mi pregunta (es mmmíiia!)  está [aquí](http://stackoverflow.com/questions/382
 
 Aún no ha sido contestada. La hice el 8 de julio de 2016; o sea, más de tres meses, bajo la media (11 minutos vs. 3 meses). Tres reviewers me editaron la pregunta (ediciones menores) porque en Stack se usa un formato especial que yo no controlaba, pero aceptaron la pregunta. Hay 324 personas que han visto la pregunta, pero, o es muy difícil o pasan de mi.
 
-Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 badges y soy `student`. En la imagen de abajo se ve.  
+Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 badges y soy `student`. En la imagen de abajo se ve.  No sé si se verá. Ya vorem
 
-![](/figs/2016-10-09-mi-primera-pregunta-en-Stack-Overflow/reputacion.png)
+![](figs/reputacion.PNG)
 
 Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día.
 
