@@ -10,9 +10,7 @@ comments: true
 
 
 
-¿Que qué es [Stack Overflow](http://stackoverflow.com/)? Pues como la Wikipedia para programadores. Siempre que tienes un problema programando vas a Google (o a tu buscador preferido) y googleas y la mayoría de las veces hallas la respuesta en Stack Overflow. Además creo que David Robinson, del cual tomé prestada la plantilla para este blog, trabaja allí.   
-
-Veamos que dice la Wikipedia de Stack:
+¿Que qué es [Stack Overflow](http://stackoverflow.com/)? Pues como la Wikipedia para programadores. Siempre que tienes un problema programando vas a Google (o a tu buscador preferido) y googleas y la mayoría de las veces hallas la respuesta en Stack Overflow. Además creo que David Robinson, del cual tome prestada la plantilla para este blog, trabaja allí. Veamos que dice la Wikipedia de Stack:
 
 
 > Stack Overflow es un sitio web desarrollado por Jeff Attwood, este sitio web es utilizado por una comunidad de desarrolladores informáticos, en la cual otros desarrolladores pueden encontrar soluciones a problemas de programación en diferentes lenguajes. 
@@ -34,9 +32,9 @@ Mi pregunta (es mmmíiia!)  está [aquí](http://stackoverflow.com/questions/382
 
 Aún no ha sido contestada. La hice el 8 de julio de 2016; o sea, más de tres meses, bajo la media (11 minutos vs. 3 meses). Tres reviewers me editaron la pregunta (ediciones menores) porque en Stack se usa un formato especial que yo no controlaba, pero aceptaron la pregunta. Hay 324 personas que han visto la pregunta, pero, o es muy difícil o pasan de mi.
 
-Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 badges y soy `student`. En la imagen de abajo se ve.  
+Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 badges y soy `student`. En la imagen de bajo se ve.  
 
-![](/figs/reputacion.PNG)
+![](/images/reputacion_en_Stack_Overflow.png)
 
 Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día.
 
