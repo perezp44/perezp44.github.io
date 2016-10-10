@@ -36,10 +36,11 @@ Aún no ha sido contestada. La hice el 8 de julio de 2016; o sea, más de tres m
 
 Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 badges y soy `student`. En la imagen de abajo se ve.  No sé si se verá. 
 
+![](/figs/reputation.png)
 
 ![center](/figs/2016-10-09-mi-primera-pregunta-en-Stack-Overflow/reputation.png)
 
-Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día.
+Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día. ++x
 
 
 
