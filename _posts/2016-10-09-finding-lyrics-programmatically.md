@@ -22,7 +22,6 @@ Bueno, *en* resumiendo que conseguí bajarme lyrics de [Chart Lyrics](http://www
 
 Ok, hasta aquí el background y la biblio, pero ¿cómo se baja la letra de una canción en [Chart Lyrics](http://www.chartlyrics.com/)[^1]? 
 
-<br>
 
 
 #### Para buscar una canción concreta se hace ...
@@ -37,7 +36,6 @@ names[1] <-  "\'Nacho&Vegas\'"       #- nombre del artista. Los \ son para hacer
 names[2] <- "\'Michi&panero\'"       #- título del song
 {% endhighlight %}
 
-<br>
 
 Almaceno la query en `querrye` y la hago con `GET()`. Para entender un poco el package `httr` ve [aquí](entender httr: https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
 
@@ -61,7 +59,7 @@ aa <- content(data, "text")  #- aqui esta el texto pero en HTML y la lyric esta 
 # aa1 <- content(data, "parsed", encoding = 'UTF-8')   #- aqui esta el texto pero en HTML y la lyric esta entre los tags  <Lyric>  </Lyric> ESte lo hace mal
 {% endhighlight %}
 
-<br>
+
 
 OK, tengo la lyrics en `aa`, pero en xml/html , así que hay que trabajarlo. [Aquí](http://www.r-bloggers.com/htmltotext-extracting-text-from-html-via-xpath/) lo aprendí.
 
@@ -79,7 +77,6 @@ plain.text <- iconv(plain.text, from = "UTF-8", to = "latin1", sub = NA, mark = 
 
 Al final hice una función (que funcionaba). Que gusto!
 
-<br>
 
 
 
@@ -114,7 +111,7 @@ make.querrye(names) #- it also works (Adele mi no gustar)
 
 <br>
 
-Estaba contento, solo tenía que poner un loop o hacer un *apply o purr y ya estaba, me bajaria las letras de las 60 canciones de golpe, pero .... si metías la función inside a loop ya no chutaba. Yo creo que es porque Chart Lyrics no dejaba hacer calls más que tras haber pasado algo de tiempo (esto es lo que yo quiero creer) y como me dolió en el alma que no funcionase mi función, pues tuve que pedir ayuda.  ¿A quien? ... en mi entorno, de programming van justitos, así que tuve que recurrir a Stack Overflow y eso me dará para el siguiente post.   
+Estaba contento, solo tenía que poner un loop o hacer un apply o un purr y ya estaba, me bajaría las letras de las 60 canciones de golpe, pero .... si metías la función inside a loop ya no chutaba. Yo creo que es porque Chart Lyrics no dejaba hacer calls más que tras haber pasado algo de tiempo (esto es lo que yo quiero creer) y como me dolió en el alma que no funcionase mi función, pues tuve que pedir ayuda.  ¿A quien? ... en mi entorno, de programming van justitos, así que tuve que recurrir a Stack Overflow y eso me dará para el siguiente post.   
 
 
 

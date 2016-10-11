@@ -38,9 +38,7 @@ Tengo una reputación de 31. Sí, 31 y subiendo exponencialmente. He ganado 2 ba
 
 ![](/figs/reputation.png)
 
-![center](/figs/2016-10-09-mi-primera-pregunta-en-Stack-Overflow/reputation.png)
-
-Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día. ++x
+Nada, ahora en serio, Stack Overflow es fantástico, muchas dudas las resuelvo allí, a ver si llego a +1000 de reputación algún día. 
 
 
 
